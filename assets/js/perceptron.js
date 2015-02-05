@@ -23,7 +23,7 @@
   var addDatum = function(klass, point) {
     datasets.push({
       klass: klass,
-      fv: [1.0, 1.0*point[0]/width, 1.0*point[1]/height]
+      fv: [1.0, 1.0 * point[0] / width, 1.0 * point[1] / height]
     });
     svg.selectAll("circle").data(datasets).enter()
       .append("circle").attr({
@@ -48,7 +48,7 @@
   });
 
   var perceptron = {
-    eta: 0.1,
+    eta: 1.0,
     weight: [0.0, 0.0, 0.0],
     index: 0,
     clear: function() {
@@ -116,8 +116,8 @@
         y2: height
       };
     }
-    var y1 = -w[0]/w[2];
-    var y2 = -(w[1] + w[0])/w[2];
+    var y1 = -w[0] / w[2];
+    var y2 = -(w[1] + w[0]) / w[2];
     return {
       x1: 0,
       y1: y1*height,
@@ -171,9 +171,9 @@
     var theta = Math.random() * Math.PI;
     var px = Math.cos(theta);
     var py = Math.sin(theta);
-    for(var i = 0; i < 100; i++) {
+    for(var i = 0; i < 50; i++) {
       var x = Math.floor(Math.random() * width);
-      var y = Math.floor(Math.random() * width);
+      var y = Math.floor(Math.random() * height);
       var dx = x - centerx;
       var dy = y - centery;
       var sgn = px * dy - py * dx;
