@@ -129,25 +129,28 @@
   var render = function() {
     var p = getPoints();
     if (svg.select("line").empty()) {
-      svg.append("line");
+      svg.append("line").attr({
+        stroke: "tomato",
+        "stroke-width": 4,
+        x1: 0, y1: -4, x2: width, y2: -4
+      });
     }
-    svg.select("line").attr({
-      stroke: "tomato",
-      "stroke-width": 4,
+    svg.select("line").transition().duration(500).attr({
       x1: p.x1, y1: p.y1, x2: p.x2, y2: p.y2
     });
   };
 
   d3.select("#button-gt").on("click", function() {
-    learn();
+    for(var c = 0; c < datasets.length; c++) {
+      learn();
+    }
     render();
   });
 
   d3.select("#button-gtgt").on("click", function() {
-    for(var c = 0; c < datasets.length * 100; c++) {
+    for(var c = 0; c < datasets.length * 300; c++) {
       learn();
-      render();
-      var flag = true
+      var flag = true;
       for(var i = 0; i < datasets.length; i++) {
         if(datasets[i].klass == 1 && perceptron.predict(datasets[i].fv) < 0) {
           flag = false;
@@ -162,29 +165,37 @@
         break;
       }
     }
+    render();
   });
 
   d3.select("#button-random").on("click", function() {
-    clearDatasets();
-    var centerx = Math.floor(Math.random() * width);
-    var centery = Math.floor(Math.random() * height);
-    var theta = Math.random() * Math.PI;
-    var px = Math.cos(theta);
-    var py = Math.sin(theta);
-    for(var i = 0; i < 50; i++) {
-      var x = Math.floor(Math.random() * width);
-      var y = Math.floor(Math.random() * height);
-      var dx = x - centerx;
-      var dy = y - centery;
-      var sgn = px * dy - py * dx;
-      var k;
-      if(sgn >= 0) {
-        k = 1;
+    while(true) {
+      clearDatasets();
+      var centerx = Math.floor(Math.random() * width);
+      var centery = Math.floor(Math.random() * height);
+      var theta = Math.random() * Math.PI;
+      var px = Math.cos(theta);
+      var py = Math.sin(theta);
+      var c1 = 0, c2 = 0;
+      for(var i = 0; i < 50; i++) {
+        var x = Math.floor(Math.random() * width);
+        var y = Math.floor(Math.random() * height);
+        var dx = x - centerx;
+        var dy = y - centery;
+        var sgn = px * dy - py * dx;
+        var k;
+        if(sgn >= 0) {
+          k = 1;
+          c1++;
+        }
+        else {
+          k = 2;
+          c2++;
+        }
+        addDatum(k, [x, y]);
       }
-      else {
-        k = 2;
-      }
-      addDatum(k, [x, y]);
+      if(c1 < 10 || c2 < 10) continue;
+      else break;
     }
   });
 
