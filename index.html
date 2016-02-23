@@ -1,29 +1,33 @@
 <!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <title>Perceptron playground</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
-  </head>
-  <body>
-    <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
-      <h1>Perceptron playground</h1>
-      <svg></svg>
-      <div id="klass-selector-group" class="btn-group pull-left" data-toggle="buttons-radio">
+<meta charset="UTF-8">
+<title>Perceptron playground</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<div class="container" style="padding-top: 20px; padding-bottom: 20px;">
+    <h1>Perceptron playground</h1>
+    <svg></svg>
+    <div id="klass-selector-group" class="btn-group pull-left" data-toggle="buttons-radio">
         <button id="klass-selector-1" class="btn btn-success active">Class1</button>
         <button id="klass-selector-2" class="btn btn-warning">Class2</button>
-      </div>
-      <div class="btn-group pull-right">
+    </div>
+    <div class="btn-group pull-right">
         <button id="button-random" class="btn">Random</button>
         <button id="button-gt" class="btn">&gt;</button>
         <button id="button-gtgt" class="btn">&gt;&gt;</button>
         <button id="button-clear" class="btn">Clear</button>
-      </div>
     </div>
-    <script src="assets/js/jquery-2.1.3.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/d3.v3.min.js" charset="utf-8"></script>
-    <script src="assets/js/perceptron.js"></script>
-  </body>
-</html>
+</div>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="https:////d3js.org/d3.v3.min.js" charset="UTF-8"></script>
+<script src="assets/js/perceptron.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-36473722-1', 'auto');
+ga('send', 'pageview');
+
+</script>
